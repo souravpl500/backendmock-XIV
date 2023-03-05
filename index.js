@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
+const { userRouter } = require("./routes/User.route");
 const { wordRouter } = require("./routes/words.routes");
 const { scoreRouter } = require("./routes/scores.routes");
 const { connection } = require("./config/db");
@@ -17,6 +18,7 @@ app.get("/", (req, res) => {
   res.send("Welcome Home Page");
 });
 
+app.use("/users", userRouter);
 app.use("/word", wordRouter);
 app.use("/score", scoreRouter);
 
